@@ -28,7 +28,9 @@ def is_wiki_tree_updated() -> bool:
         return True
 
 
-def make_wiki_tree(current_dir: str = DEFAULT_PATH, wiki_keys: list[str] =[DEFAULT_PATH], wiki={}):
+def make_wiki_tree(
+    current_dir: str = DEFAULT_PATH, wiki_keys: list[str] = [DEFAULT_PATH], wiki={}
+):
     to_eval = make_dict_eval_string("wiki", wiki_keys)
     eval(to_eval)
 
@@ -54,7 +56,7 @@ def make_dict_eval_string(wiki_name: str, keys):
 
     string = f"{wiki_name}"
     for ind, key in enumerate(keys):
-        if ind == len(keys)-1:
+        if ind == len(keys) - 1:
             string += f".update({{'{key}': {{}}}})"
         else:
             string += f"['{key}']"
@@ -62,7 +64,7 @@ def make_dict_eval_string(wiki_name: str, keys):
     return string
 
 
-def make_tags(current_dir: str = DEFAULT_PATH, tag: str = '0', tag_count: int = 0):
+def make_tags(current_dir: str = DEFAULT_PATH, tag: str = "0", tag_count: int = 0):
     write_tag(current_dir, tag)
 
     for path in os.listdir(current_dir):
@@ -72,7 +74,7 @@ def make_tags(current_dir: str = DEFAULT_PATH, tag: str = '0', tag_count: int = 
             continue
 
         if any(is_dir(new_current_path, path) for path in os.listdir(new_current_path)):
-            make_tags(new_current_path, f"{tag}.{tag_count}", tag_count+1)
+            make_tags(new_current_path, f"{tag}.{tag_count}", tag_count + 1)
         else:
             write_tag(new_current_path, f"{tag}.{tag_count}")
 
@@ -88,7 +90,7 @@ def write_tag(path, tag):
 
     if any(exl in path for exl in EXCLUDE_FOLDERS):
         return
-    
+
     WIKI_TAGS.update({tag: f"{path}/tag.md"})
 
     with open(f"{path}/tag.md", "w") as f:
@@ -108,7 +110,7 @@ def wiki_dict_to_yaml(tag_dict: dict, _indet="", _yaml_string=""):
             _yaml_string += f"\n{_indet}-{k}"
         else:
             _yaml_string += f"\n{_indet}| {k}:"
-            _yaml_string = wiki_dict_to_yaml(v, _indet+"  ", _yaml_string)
+            _yaml_string = wiki_dict_to_yaml(v, _indet + "  ", _yaml_string)
 
     return _yaml_string
 
@@ -122,7 +124,7 @@ def tag_dict_to_yaml(tags):
     return yaml_string
 
 
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    while 1:
 #        update_wiki()
 #        write_stats()

@@ -4,7 +4,8 @@ from jinja2 import Environment, PackageLoader
 
 class Config:
     env = Environment(
-        loader=PackageLoader("pywiki"),)
+        loader=PackageLoader("pywiki"),
+    )
 
     project_root = Path(__file__).parents[0].absolute()
     print(project_root)

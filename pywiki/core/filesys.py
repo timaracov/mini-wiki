@@ -4,15 +4,15 @@ from pathlib import Path
 
 def get_folders_files(folder):
     return [
-        name for name in os.listdir(folder)
+        name
+        for name in os.listdir(folder)
         if not os.path.isdir(os.path.join(folder, name))
     ]
 
 
 def get_folders_subdirs(folder):
     return [
-        name for name in os.listdir(folder)
-        if os.path.isdir(os.path.join(folder, name))
+        name for name in os.listdir(folder) if os.path.isdir(os.path.join(folder, name))
     ]
 
 

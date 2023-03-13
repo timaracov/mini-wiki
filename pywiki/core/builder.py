@@ -3,12 +3,7 @@ from pathlib import Path
 
 from pywiki.config import Config
 
-from .md_html import (
-    is_md_file,
-    add_page_file,
-    md2html_extension,
-    add_index_page
-)
+from .md_html import is_md_file, add_page_file, md2html_extension, add_index_page
 from .filesys import get_folders_files, get_folders_subdirs
 
 
@@ -39,6 +34,7 @@ def _create_output_folders(config):
 
 def _drop_output_folders(config):
     from shutil import rmtree
+
     try:
         rmtree(config.out_path)
     except:
@@ -51,8 +47,8 @@ def _copy_styles_by_theme(config):
     available_themes = __get_available_themes(config)
     if config.theme in available_themes:
         copy_tree(
-            str(__get_theme_folder(config.theme, config)),
-            str(config.out_styles_path))
+            str(__get_theme_folder(config.theme, config)), str(config.out_styles_path)
+        )
 
 
 def _build_html_files_tree(source_folder: Path, out_folder: Path, root=1):
@@ -61,9 +57,7 @@ def _build_html_files_tree(source_folder: Path, out_folder: Path, root=1):
 
     for file in files:
         if is_md_file(file):
-            add_page_file(
-                source_folder / file,
-                out_folder / md2html_extension(file))
+            add_page_file(source_folder / file, out_folder / md2html_extension(file))
 
     for subdir in subdirs:
         new_out_folder = out_folder / subdir
@@ -73,7 +67,6 @@ def _build_html_files_tree(source_folder: Path, out_folder: Path, root=1):
         _build_html_files_tree(new_source_folder, new_out_folder, root=0)
 
     add_index_page(source_folder, out_folder, bool(root))
-
 
 
 def __get_available_themes(config):

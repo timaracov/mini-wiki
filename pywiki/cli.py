@@ -15,17 +15,15 @@ def _get_parser():
         description="Build local wiki from markdown files",
     )
 
-    _parser.add_argument(
-        "folder",
-        help="source folder of markdown files")
+    _parser.add_argument("folder", help="source folder of markdown files")
     _parser.add_argument(
         "--theme",
         default="default_dark",
-        help="wiki pages theme, default opptions: default_dark")
+        help="wiki pages theme, default opptions: default_dark",
+    )
     _parser.add_argument(
-        "--name",
-        default="wiki",
-        help="name of the output wiki folder")
+        "--name", default="wiki", help="name of the output wiki folder"
+    )
     _parser.add_argument(
         "--output",
         default="./out",
