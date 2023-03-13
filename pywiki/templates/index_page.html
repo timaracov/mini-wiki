@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href={{styles_path}}>
+</head>
+<body>
+<div class="wiki__container">
+	<a class="index__page__header">{{index_page_header}}<a>
+	<input class="search__input">
+	<div class="index__page__container">
+		<a class="topics__header">Sub topics:</a>
+		<ul class="subtopics__container">
+			{% for topic in subtopics%}
+				<li><a href="{{topic}}/index_{{topic}}.html">{{topic}}</a></li>
+			{% endfor %}
+		</ul>
+		<a class="articles__header">Articles:</a>
+		<ul class="article__container">
+			{% for article in articles%}
+				<li><a href="./{{article}}">{{article}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+</body>
+</html>

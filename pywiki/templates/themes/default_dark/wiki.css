@@ -1,0 +1,43 @@
+/*default dark theme*/
+
+
+* {
+	background-color: rgb(29, 31, 32);
+	font-family: "Mono";
+}
+
+.wiki__container {
+	padding: 30px 20%; 
+}
+
+.page__header {
+	font-size: 64px;
+	font-weight: 1000;
+	color: rgb(202, 199, 193);
+}
+
+.article__container {
+	color: rgb(190, 186, 180);
+}
+
+h2 {
+	padding: 10px 0;
+}
+
+code {
+	/*background-color: rgb(100, 100, 150);
+	color: rgb(240, 240, 240);*/
+	border-radius: 5px;
+	border-width: 2px;
+}
+
+a {
+	color: rgb(100, 100, 120);
+}
+
+blockquote {
+	padding: 5px;
+	border-style: solid;
+	border-radius: 15px;
+	border-width: 2px;
+}
